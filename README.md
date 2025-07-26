@@ -160,7 +160,7 @@ Fiz um Switch para manter tudo em um código só, criando os métodos e chamando
         </tr>
         <tr>
             <td>À Fazer</td>
-            <td>20</td>
+            <td>30</td>
             <td>Agenda com Salvamento em Arquivo .txt (File IO)</td>
         </tr>
     </tbody>
