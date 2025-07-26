@@ -32,18 +32,100 @@ class Program
             case "7":
                 contaLetras();
                 break;
-            //case "8":
-            //    imc();
-            //    break;
-            //case "9":
-            //    adivinhaNumero();
-            //    break;
-            //case "10":
-            //    palindromo();
-            //    break;
-            defaut:
+            case "8":
+                imc();
+                break;
+            case "9":
+                adivinhaNumero();
+                break;
+            case "10":
+                palindromo();
+                break;
+            default:
                 Console.WriteLine("Opção inválida!");
                 break;
+        }
+    }
+
+    private static void imc()
+    {
+        Console.WriteLine("Vamos saber seu IMC!");
+        Console.WriteLine("Digite seu peso: ");
+        string inputPeso = Console.ReadLine();
+        bool validaPeso = double.TryParse(inputPeso, out double peso);
+        Console.WriteLine("Digite sua altura (cm): ");
+        string inputAltura = Console.ReadLine();
+        bool validaAltura = double.TryParse(inputAltura, out double altura);
+
+        if (validaPeso && validaAltura)
+        {
+            double imc = (peso / (altura * altura) * 10000);
+            Console.WriteLine($"Seu IMC é {imc:F2}.");
+
+        }
+    }
+
+    private static void adivinhaNumero()
+    {
+        Console.WriteLine("Adivinhe o número entre 1 e 10");
+
+        Random random = new Random();
+        int aleatorio = random.Next(1, 10);
+        int contadorTentativas = 0;
+        int digitado = 0;
+
+        while (digitado != aleatorio)
+        {
+
+            Console.WriteLine("Digite um número: ");
+            string nDigitado = Console.ReadLine();
+            bool validado = int.TryParse(nDigitado, out int escolhido);
+            digitado = escolhido;
+
+            if (!validado)
+            {
+                Console.WriteLine("Número inválido!");
+                return;
+            }
+
+            contadorTentativas++;
+
+            if (escolhido < aleatorio)
+            {
+                Console.WriteLine("O número digitado é MENOR que o esperado:");
+            }
+            else if (escolhido > aleatorio)
+            {
+                Console.WriteLine("O número digitado é MAIOR que o esperado.");
+            }
+            else if (escolhido == aleatorio)
+            {
+                Console.WriteLine($"Parabéns, você acertou em {contadorTentativas} tentativas!");
+            }
+        }
+    }
+
+    private static void palindromo()
+    {
+        Console.WriteLine("A palavra ou frase é um palíndromo?");
+        Console.WriteLine("Digite uma palavra ou frase (sem acentuação ou caracteres especiais): ");
+        string input = Console.ReadLine();
+        input = Ajuste(input);
+        string invertido = new string(input.ToCharArray().Reverse().ToArray());
+
+        if (input == invertido)
+        {
+            Console.WriteLine("É palíndromo!");
+        }
+        else
+        {
+            Console.WriteLine("Não é palíndromo!");
+        }
+
+        static string Ajuste(string txt)
+        {
+            txt = txt.ToLower().Replace(" ", "").Replace(" .", "").Replace(" ,", "").Replace(" .", "").Replace("-", "").Replace("!", "").Replace("?", "");
+            return txt;
         }
     }
 
