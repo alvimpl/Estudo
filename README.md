@@ -44,24 +44,24 @@ Fiz um Switch para manter tudo em um código só, criando os métodos e chamando
             <td>Números Primos até N (Loop + Função)</td>
         </tr>
         <tr>
-            <td>À Fazer</td>
+            <td>Feito</td>
             <td>7</td>
             <td>Jogo de Adivinhação (Random + While)</td>
         </tr>
         <tr>
-            <td>À Fazer</td>
+            <td>Feito</td>
             <td>8</td>
             <td>Calculadora de IMC (Entrada + Condição)</td>
         </tr>
         <tr>
-            <td>À Fazer</td>
+            <td>Feito</td>
             <td>9</td>
             <td>Contar Vogais e Consoantes em uma Frase</td>
         </tr>
         <tr>
-            <td>À Fazer</td>
+            <td>Feito</td>
             <td>10</td>
-            <td>Contagem Regressiva com Loop</td>
+            <td>Palindromo</td>
         </tr>
         <tr>
             <td>À Fazer</td>

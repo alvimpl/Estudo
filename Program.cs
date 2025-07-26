@@ -6,7 +6,7 @@ class Program
     static void Main()
     {
         Console.WriteLine("Escolha a opção desejada!: ");
-        Console.WriteLine("1 Calculadora | 2 Par ou Ímpar | 3 Conversor Temperatura | 4 Tabuada | 5 Contador de Palavras | 6 Números Primos");
+        Console.WriteLine("1 Calculadora | 2 Par ou Ímpar | 3 Conversor Temperatura | 4 Tabuada | 5 Contador de Palavras | 6 Números Primos | 7 Contador de Letras | 8 IMC | 9 Adivinha Número | 10 Palindromo");
         string escolha = Console.ReadLine();
 
         switch (escolha)
@@ -29,25 +29,68 @@ class Program
             case "6":
                 numerosPrimos();
                 break;
+            case "7":
+                contaLetras();
+                break;
+            //case "8":
+            //    imc();
+            //    break;
+            //case "9":
+            //    adivinhaNumero();
+            //    break;
+            //case "10":
+            //    palindromo();
+            //    break;
             defaut:
                 Console.WriteLine("Opção inválida!");
                 break;
         }
     }
 
+    private static void contaLetras()
+    {
+        Console.WriteLine("Digite uma frase para fazermos a conta de letras: ");
+        string frase = Console.ReadLine();
+
+        frase = frase.ToLower().Replace(" ", "");
+
+        int contaVogais = 0;
+        int contaConsoantes = 0;
+        int contaOutros = 0;
+
+        foreach (char caracter in frase)
+        {
+            if ("aeiou".Contains(caracter))
+            {
+                contaVogais++;
+            }
+            else if ("bcdfghjklmnpqrstvwyz".Contains(caracter))
+            {
+                contaConsoantes++;
+            }
+            else
+            {
+                contaOutros++;
+            }
+        }
+        Console.WriteLine($"Sua frase tem {contaVogais} vogal(is), {contaConsoantes} consoante(s) e {contaOutros} outro(s) caracter(es).");
+    }
+
     private static void numerosPrimos()
     {
-        Console.WriteLine("Digite um número para ver todos primos de 0 até ele: ");
+        Console.WriteLine("Insira um número: ");
         string input = Console.ReadLine();
         bool validacao = int.TryParse(input, out int numero);
 
-        if (!validacao) {
-            Console.WriteLine("Dado inserido não é válido!");
+        if (!validacao)
+        {
+            Console.WriteLine("Dados inválidos!");
             return;
         }
 
         Console.WriteLine($"Os números primos até {numero} são: ");
-            for ( int i = 2; i <= numero; i++ )
+
+        for (int i = 2; i <= numero; i++)
         {
             if (Primos(i))
             {
@@ -55,26 +98,28 @@ class Program
             }
         }
 
-        static bool Primos(int n)
-        {
+        static bool Primos(int n) {
             if (n <= 1) return false;
             for (int i = 2; i <= Math.Sqrt(n); i++)
             {
+
                 if (n % i == 0) return false;
+
             } return true;
         }
-
     }
 
     private static void contadorPalavras()
     {
-        Console.WriteLine("Digite uma pequena frase: ");
+        Console.WriteLine("Digite uma frase: ");
         string input = Console.ReadLine();
 
         string[] palavras = input.Split(new char[] { ' ', '.', ',', '-', '_', '?', '!' }, StringSplitOptions.RemoveEmptyEntries);
 
-        Console.WriteLine($"Você digitou {palavras.Length} palavras nesta frase!");
+        Console.WriteLine($"Sua frase possui {palavras.Length} palavras");
     }
+
+
     private static void tabuada()
     {
         Console.WriteLine("Escolha um número: ");
